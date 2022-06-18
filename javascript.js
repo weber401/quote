@@ -1,11 +1,42 @@
 //TODO
 //THE RECIVED JSON HAS NOT TITLE, MAKE IT RETRIVE ONE JSON QUOTE AT A TIME
 
-const projectName = "random quote machine"
+const projectName = "random-quote-machine"
 
 var currentQuote = ''
 var currentAuthor = ''
 let quotesData;  
+
+
+var colorsCombination = {
+  "1": {
+    "first":"#1ECBE1",
+    "second": "#1E6AE1",
+    "third": "#1EE196"
+  },
+  "2": {
+    "first":"#16E92D",
+    "second": "#16E997",
+    "third": "#68E916"
+  },
+  "3": {
+    "first":"#49ED12",
+    "second": "#12ED49",
+    "third": "#12ED49"
+  },
+  "4": {
+    "first":"#B3F10E",
+    "second": "#42F10E",
+    "third": "#F1BD0E"
+  },
+  "5": {
+    "first":"#E87017",
+    "second": "#E8D817",
+    "third": "#E81727"
+  }
+}
+var combo = colorsCombination[1]
+console.log(combo.first)
 
 // for api call
 function getQuotes(){
@@ -63,7 +94,49 @@ function getQuote() {
   console.log(currentAuthor)
   $('.quote-text').text(currentQuote);
   $('#author').text(currentAuthor);
+
+  //for color and animations
+  var color = colorsCombination[Math.floor(Math.random() * 5)];
+  console.log(color)
+  console.log(color.first)
+  $('body').animate(
+    {
+      backgroundColor: "#333"
+    },
+    1000
+  );
+  $('.button').animate(
+    {
+      backgroundColor: color.first
+    },
+    1000
+  );
+  $('#quote-box').animate(
+    {
+      backgroundColor: "#73A857"
+    },
+    1000
+  );
+  $('#new-quote').animate(
+    {
+      color: color.third
+    },
+    1000
+  );
+  $('#tweet-quote').animate(
+    {
+      color: color.third
+    },
+    1000
+  );
+  $('#tumblr-quote').animate(
+    {
+      color: color.third
+    },
+    1000
+  );
 }
+
 
 $(document).ready(function () {
   getQuotes().then(() => {
