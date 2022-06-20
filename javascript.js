@@ -99,11 +99,12 @@ function getQuote() {
   var color = colorsCombination[Math.floor(Math.random() * 5)];
   console.log(color)
   console.log(color.first)
+  //TODO 
+  //everything working(height, width...) for animate except color
   $('body').animate(
     {
       backgroundColor: "#333"
-    },
-    1000
+    }
   );
   $('.button').animate(
     {
@@ -119,7 +120,7 @@ function getQuote() {
   );
   $('#new-quote').animate(
     {
-      color: color.third
+      color: "#333"
     },
     1000
   );
